@@ -14,12 +14,12 @@ namespace CRAutosAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ReceiveCarController : ControllerBase
+    public class SearchCarController : ControllerBase
     {
-        private readonly ILogger<ReceiveCarController> _logger;
+        private readonly ILogger<SearchCarController> _logger;
         private readonly IOptions<CRAutos> _config;
         private readonly IScraper _scraper;
-        public ReceiveCarController(IOptions<CRAutos> config, ILogger<ReceiveCarController> logger, IScraper scraper)
+        public SearchCarController(IOptions<CRAutos> config, ILogger<SearchCarController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
@@ -29,7 +29,7 @@ namespace CRAutosAPI.Controllers
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _scraper.ScrapData("recibe");
+            return null;
         }
     }
 }

@@ -18,18 +18,18 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<DoorsController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _brandScraper;
-        public DoorsController(IOptions<CRAutos> config, ILogger<DoorsController> logger, IScraper brandScraper)
+        private readonly IScraper _scraper;
+        public DoorsController(IOptions<CRAutos> config, ILogger<DoorsController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
-            _brandScraper = brandScraper;
+            _scraper = scraper;
         }
 
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _brandScraper.ScrapData("doors");
+            return _scraper.ScrapData("doors");
         }
     }
 }

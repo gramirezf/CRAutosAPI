@@ -18,18 +18,18 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<TransmissionController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _brandScraper;
-        public TransmissionController(IOptions<CRAutos> config, ILogger<TransmissionController> logger, IScraper brandScraper)
+        private readonly IScraper _scraper;
+        public TransmissionController(IOptions<CRAutos> config, ILogger<TransmissionController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
-            _brandScraper = brandScraper;
+            _scraper = scraper;
         }
 
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _brandScraper.ScrapData("trans");
+            return _scraper.ScrapData("trans");
         }
     }
 }

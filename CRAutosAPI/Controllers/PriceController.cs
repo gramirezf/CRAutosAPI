@@ -18,31 +18,31 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<PriceController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _brandScraper;
-        public PriceController(IOptions<CRAutos> config, ILogger<PriceController> logger, IScraper brandScraper)
+        private readonly IScraper _scraper;
+        public PriceController(IOptions<CRAutos> config, ILogger<PriceController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
-            _brandScraper = brandScraper;
+            _scraper = scraper;
         }
 
 
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _brandScraper.ScrapData("pricefrom");
+            return _scraper.ScrapData("pricefrom");
         }
 
         [HttpGet("From")]
         public IEnumerable<ISectionData> GetFrom()
         {
-            return _brandScraper.ScrapData("pricefrom");
+            return _scraper.ScrapData("pricefrom");
         }
 
         [HttpGet("To")]
         public IEnumerable<ISectionData> GetTo()
         {
-            return _brandScraper.ScrapData("priceto");
+            return _scraper.ScrapData("priceto");
         }
     }
 }

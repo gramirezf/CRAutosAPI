@@ -18,18 +18,18 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<FuelTypeController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _brandScraper;
-        public FuelTypeController(IOptions<CRAutos> config, ILogger<FuelTypeController> logger, IScraper brandScraper)
+        private readonly IScraper _scraper;
+        public FuelTypeController(IOptions<CRAutos> config, ILogger<FuelTypeController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
-            _brandScraper = brandScraper;
+            _scraper = scraper;
         }
 
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _brandScraper.ScrapData("fuel");
+            return _scraper.ScrapData("fuel");
         }
     }
 }

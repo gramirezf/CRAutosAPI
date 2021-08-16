@@ -18,18 +18,18 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<ProvinceController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _brandScraper;
-        public ProvinceController(IOptions<CRAutos> config, ILogger<ProvinceController> logger, IScraper brandScraper)
+        private readonly IScraper _scraper;
+        public ProvinceController(IOptions<CRAutos> config, ILogger<ProvinceController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
-            _brandScraper = brandScraper;
+            _scraper = scraper;
         }
 
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _brandScraper.ScrapData("province");
+            return _scraper.ScrapData("province");
         }
     }
 }

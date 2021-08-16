@@ -18,18 +18,18 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<ShowNewOrUserController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _brandScraper;
-        public ShowNewOrUserController(IOptions<CRAutos> config, ILogger<ShowNewOrUserController> logger, IScraper brandScraper)
+        private readonly IScraper _scraper;
+        public ShowNewOrUserController(IOptions<CRAutos> config, ILogger<ShowNewOrUserController> logger, IScraper scraper)
         {
             _logger = logger;
             _config = config;
-            _brandScraper = brandScraper;
+            _scraper = scraper;
         }
 
         [HttpGet]
         public IEnumerable<ISectionData> Get()
         {
-            return _brandScraper.ScrapData("newused");
+            return _scraper.ScrapData("newused");
         }
     }
 }
