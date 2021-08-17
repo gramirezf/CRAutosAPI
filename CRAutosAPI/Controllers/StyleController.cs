@@ -14,15 +14,13 @@ namespace CRAutosAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ModelController : ControllerBase
+    public class StyleController : ControllerBase
     {
-        private readonly ILogger<ModelController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public ModelController(IOptions<CRAutos> config, ILogger<ModelController> logger, IScraper scraper)
+        private readonly ILogger<StyleController> _logger;
+        private readonly IDataScraper _scraper;
+        public StyleController(ILogger<StyleController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

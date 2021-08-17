@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class FinancedController : ControllerBase
     {
         private readonly ILogger<FinancedController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public FinancedController(IOptions<CRAutos> config, ILogger<FinancedController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public FinancedController(ILogger<FinancedController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class ProvinceController : ControllerBase
     {
         private readonly ILogger<ProvinceController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public ProvinceController(IOptions<CRAutos> config, ILogger<ProvinceController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public ProvinceController(ILogger<ProvinceController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

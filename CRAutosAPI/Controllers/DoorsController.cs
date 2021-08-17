@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class DoorsController : ControllerBase
     {
         private readonly ILogger<DoorsController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public DoorsController(IOptions<CRAutos> config, ILogger<DoorsController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public DoorsController(ILogger<DoorsController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

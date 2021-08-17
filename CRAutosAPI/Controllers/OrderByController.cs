@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class OrderByController : ControllerBase
     {
         private readonly ILogger<OrderByController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public OrderByController(IOptions<CRAutos> config, ILogger<OrderByController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public OrderByController(ILogger<OrderByController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

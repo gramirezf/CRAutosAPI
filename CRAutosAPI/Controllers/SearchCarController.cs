@@ -18,18 +18,19 @@ namespace CRAutosAPI.Controllers
     {
         private readonly ILogger<SearchCarController> _logger;
         private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public SearchCarController(IOptions<CRAutos> config, ILogger<SearchCarController> logger, IScraper scraper)
+        private readonly CRAutosSearchScraper _scraper;
+        public SearchCarController(IOptions<CRAutos> config, ILogger<SearchCarController> logger)
         {
             _logger = logger;
             _config = config;
-            _scraper = scraper;
+            _scraper = new CRAutosSearchScraper(_config);
         }
 
-        [HttpGet]
-        public IEnumerable<ISectionData> Get()
+        [HttpPost]
+        public IEnumerable<SearchResult> Search(SearchRequest CarSearch)
         {
-            return null;
+            return _scraper.ScrapData(CarSearch);
+            
         }
     }
 }

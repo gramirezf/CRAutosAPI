@@ -9,15 +9,18 @@ using CRAutosAPI.Configuration;
 using CRAutosAPI.Models;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
+using System.Text;
+using System.IO;
+using System.Web;
 
 namespace CRAutosAPI.Scrapers
 {
-    public class CRAutosScraper : IScraper
+    public class CRAutosDataScraper : IDataScraper
     {
 
         private readonly IOptions<CRAutos> _config;
 
-        public CRAutosScraper(IOptions<CRAutos> config)
+        public CRAutosDataScraper(IOptions<CRAutos> config)
         {
             _config = config;
         }
@@ -43,15 +46,16 @@ namespace CRAutosAPI.Scrapers
         {
             var dataSet = new List<ISectionData>();
             var doc = new HtmlDocument();
-
+            StringWriter dataWriter = new StringWriter();
             doc.LoadHtml(html);
             var formNode = doc.DocumentNode.SelectNodes(String.Format("//select[@name='{0}']", sectionName));
-            //Mapear aqui propiedades, hay que devolver una lista
             foreach (var item in formNode.First().ChildNodes)
             {
                 if (item.Name == "option")
                 {
-                    dataSet.Add(new SiteElement() { Id = Int32.Parse(item.Attributes.First().Value),Value= item.InnerText}) ;
+                    dataWriter.GetStringBuilder().Clear();
+                    HttpUtility.HtmlDecode(item.InnerText, dataWriter);
+                    dataSet.Add(new SiteElement() { Id = Int32.Parse(item.Attributes.First().Value),Value= dataWriter.ToString() }) ;
                 }
             }
             return dataSet;

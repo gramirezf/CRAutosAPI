@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class BrandController : ControllerBase
     {
         private readonly ILogger<BrandController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public BrandController(IOptions<CRAutos> config, ILogger<BrandController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public BrandController(ILogger<BrandController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

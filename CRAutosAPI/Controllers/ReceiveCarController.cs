@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class ReceiveCarController : ControllerBase
     {
         private readonly ILogger<ReceiveCarController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public ReceiveCarController(IOptions<CRAutos> config, ILogger<ReceiveCarController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public ReceiveCarController(ILogger<ReceiveCarController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

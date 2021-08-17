@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class FuelTypeController : ControllerBase
     {
         private readonly ILogger<FuelTypeController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public FuelTypeController(IOptions<CRAutos> config, ILogger<FuelTypeController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public FuelTypeController(ILogger<FuelTypeController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

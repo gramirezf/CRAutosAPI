@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class PriceController : ControllerBase
     {
         private readonly ILogger<PriceController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public PriceController(IOptions<CRAutos> config, ILogger<PriceController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public PriceController(ILogger<PriceController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

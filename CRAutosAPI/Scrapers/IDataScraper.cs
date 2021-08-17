@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRAutosAPI.Scrapers
 {
-    public interface IScraper
+    public interface IDataScraper
     {
         string GetSite(string sectionUrl);
         List<ISectionData> ExtractData(string html, string dataName);

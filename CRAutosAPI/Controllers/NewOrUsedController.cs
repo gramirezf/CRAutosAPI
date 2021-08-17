@@ -14,15 +14,13 @@ namespace CRAutosAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ShowNewOrUserController : ControllerBase
+    public class NewOrUsedController : ControllerBase
     {
-        private readonly ILogger<ShowNewOrUserController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public ShowNewOrUserController(IOptions<CRAutos> config, ILogger<ShowNewOrUserController> logger, IScraper scraper)
+        private readonly ILogger<NewOrUsedController> _logger;
+        private readonly IDataScraper _scraper;
+        public NewOrUsedController(ILogger<NewOrUsedController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 

@@ -9,5 +9,6 @@ namespace CRAutosAPI.Configuration
     {
         public string HomeUrl { get; set; }
         public string UsedCarsUrl { get; set; }
+        public string SearchCarUrl { get; set; }
     }
 }

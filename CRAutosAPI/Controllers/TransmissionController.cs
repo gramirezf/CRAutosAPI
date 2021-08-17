@@ -17,12 +17,10 @@ namespace CRAutosAPI.Controllers
     public class TransmissionController : ControllerBase
     {
         private readonly ILogger<TransmissionController> _logger;
-        private readonly IOptions<CRAutos> _config;
-        private readonly IScraper _scraper;
-        public TransmissionController(IOptions<CRAutos> config, ILogger<TransmissionController> logger, IScraper scraper)
+        private readonly IDataScraper _scraper;
+        public TransmissionController(ILogger<TransmissionController> logger, IDataScraper scraper)
         {
             _logger = logger;
-            _config = config;
             _scraper = scraper;
         }
 
